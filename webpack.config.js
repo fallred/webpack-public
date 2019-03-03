@@ -2,6 +2,7 @@ let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
 let webpack = require('webpack');
+let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 // 基于node的 遵循commonjs规范的
 module.exports = {
     entry: './src/index.js',// 入口
@@ -19,6 +20,9 @@ module.exports = {
     },// 开发服务器
     module: {},//模块配置
     plugins: [
+        new ExtractTextWebpackPlugin({
+            filename: 'css/index.css'
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(['./build']),
         // 打包html插件
@@ -31,7 +35,36 @@ module.exports = {
     mode: 'development',//可以更改模式
     resolve: {},// 配置解析
     module:{
-        rules:{}
+        rules:[ //从右往左写
+            // {test: /\.css$/, use:['style-loader','css-loader']}
+            {
+                test: /\.css$/,
+                // use:[{
+                //     loader: 'style-loader'
+                // },{
+                //     loader: 'css-loader'
+                // }]
+                use: ExtractTextWebpackPlugin.extract({
+                    use:[{
+                        loader: 'css-loader'
+                    }]
+                })
+            },
+            {
+                test:/\.less$/,
+                // use: [
+                //     { loader: 'style-loader' },
+                //     { loader: 'css-loader' },
+                //     { loader: 'less-loader' },
+                // ]
+                use: ExtractTextWebpackPlugin.extract({
+                    use:[
+                        { loader: 'css-loader' },
+                        { loader: 'less-loader' },
+                    ]
+                })
+            }
+        ]
     }
 };
 // 1.在webpack中如何配置开发服务器 webpack-dev-server
