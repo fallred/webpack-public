@@ -3,8 +3,14 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
 let webpack = require('webpack');
 let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
-let LessExtract = new ExtractTextWebpackPlugin('css/less.css');
-let CssExtract = new ExtractTextWebpackPlugin('css/css.css');
+let LessExtract = new ExtractTextWebpackPlugin({
+    filename: 'css/less.css',
+    disable: true
+});
+let CssExtract = new ExtractTextWebpackPlugin({
+    filename: 'css/css.css',
+    disable: true
+});
 // 基于node的 遵循commonjs规范的
 module.exports = {
     entry: './src/index.js',// 入口
@@ -46,6 +52,7 @@ module.exports = {
                 //     loader: 'css-loader'
                 // }]
                 use: CssExtract.extract({
+                    fallback: 'style-loader',
                     use:[{
                         loader: 'css-loader'
                     }]
@@ -59,6 +66,7 @@ module.exports = {
                 //     { loader: 'less-loader' },
                 // ]
                 use: LessExtract.extract({
+                    fallback: 'style-loader',
                     use:[
                         { loader: 'css-loader' },
                         { loader: 'less-loader' },
