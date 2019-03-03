@@ -10,6 +10,7 @@ let LessExtract = new ExtractTextWebpackPlugin({
 let CssExtract = new ExtractTextWebpackPlugin({
     filename: 'css/css.css',
 });
+let CopyWebpackPlugin = require('copy-webpack-plugin');
 let PurifycssWebpack = require('purifycss-webpack');
 let glob = require('glob');
 // 基于node的 遵循commonjs规范的
@@ -30,6 +31,12 @@ module.exports = {
     module: {},//模块配置
     plugins: [
         CssExtract,
+        new CopyWebpackPlugin([
+            {
+                from: './src/doc',
+                to: 'public'
+            }
+        ]),
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(['./build']),
         // 打包html插件
