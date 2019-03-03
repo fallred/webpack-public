@@ -9,8 +9,9 @@ let LessExtract = new ExtractTextWebpackPlugin({
 });
 let CssExtract = new ExtractTextWebpackPlugin({
     filename: 'css/css.css',
-    disable: true
 });
+let PurifycssWebpack = require('purifycss-webpack');
+let glob = require('glob');
 // 基于node的 遵循commonjs规范的
 module.exports = {
     entry: './src/index.js',// 入口
@@ -28,7 +29,6 @@ module.exports = {
     },// 开发服务器
     module: {},//模块配置
     plugins: [
-        LessExtract,
         CssExtract,
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(['./build']),
@@ -38,6 +38,10 @@ module.exports = {
             title: '珠峰架构',
             hash: true
         }),
+        // 将没用的css删除掉，一定要放在HtmlWebpackPlugin后面
+        new PurifycssWebpack({
+            paths: glob.sync(path.resolve('src/*.html'))
+        })
     ],// 插件的配置
     mode: 'development',//可以更改模式
     resolve: {},// 配置解析
@@ -52,27 +56,11 @@ module.exports = {
                 //     loader: 'css-loader'
                 // }]
                 use: CssExtract.extract({
-                    fallback: 'style-loader',
                     use:[{
                         loader: 'css-loader'
                     }]
                 })
             },
-            {
-                test:/\.less$/,
-                // use: [
-                //     { loader: 'style-loader' },
-                //     { loader: 'css-loader' },
-                //     { loader: 'less-loader' },
-                // ]
-                use: LessExtract.extract({
-                    fallback: 'style-loader',
-                    use:[
-                        { loader: 'css-loader' },
-                        { loader: 'less-loader' },
-                    ]
-                })
-            }
         ]
     }
 };
