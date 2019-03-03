@@ -20,3 +20,5 @@ npm install webpack webpack-cli -D
 ```
 npx webpack
 ```
+
+## plugins loader

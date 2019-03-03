@@ -1,1 +1,1 @@
-module.exports = '欢迎大家参加架构公开课1';
+module.exports = '欢迎大家参加架构公开课11';

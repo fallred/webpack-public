@@ -25,12 +25,14 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             title: '珠峰架构',
-            hash: true,
-            chunks:['index']
+            hash: true
         }),
     ],// 插件的配置
     mode: 'development',//可以更改模式
-    resolve: {}// 配置解析
+    resolve: {},// 配置解析
+    module:{
+        rules:{}
+    }
 };
 // 1.在webpack中如何配置开发服务器 webpack-dev-server
 // 2. webpack插件 1将html打包到build下可以自动引入生产的js
