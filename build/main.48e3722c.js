@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "936263ff7ca8cffc0893";
+/******/ 	var hotCurrentHash = "48e3722c2562906ac7e3";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -804,14 +804,37 @@ eval("module.exports = '欢迎大家参加架构公开课11';\n\n//# sourceURL=w
 
 /***/ }),
 
+/***/ "./src/index.css":
+/*!***********************!*\
+  !*** ./src/index.css ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/index.css?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("let str = __webpack_require__(/*! ./a.js */ \"./src/a.js\");\r\n// import './index.css';\r\n// console.log(str);\r\ndocument.getElementById('app').innerHTML = str;\r\nif (true) {\r\n    module.hot.accept();\r\n    // module.hot.accept('./a.js', function(){\r\n    //     let str = require('./a.js');\r\n    //     console.log(str);\r\n    //     document.getElementById('app').innerHTML = str;\r\n    // });\r\n}\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.less */ \"./src/style.less\");\n/* harmony import */ var _style_less__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_less__WEBPACK_IMPORTED_MODULE_1__);\nlet str = __webpack_require__(/*! ./a.js */ \"./src/a.js\");\r\n\r\n\r\n// console.log(str);\r\ndocument.getElementById('app').innerHTML = str;\r\nif (true) {\r\n    module.hot.accept();\r\n    // module.hot.accept('./a.js', function(){\r\n    //     let str = require('./a.js');\r\n    //     console.log(str);\r\n    //     document.getElementById('app').innerHTML = str;\r\n    // });\r\n}\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/style.less":
+/*!************************!*\
+  !*** ./src/style.less ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/style.less?");
 
 /***/ })
 

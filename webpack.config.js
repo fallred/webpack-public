@@ -3,6 +3,8 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
 let webpack = require('webpack');
 let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+let LessExtract = new ExtractTextWebpackPlugin('css/less.css');
+let CssExtract = new ExtractTextWebpackPlugin('css/css.css');
 // 基于node的 遵循commonjs规范的
 module.exports = {
     entry: './src/index.js',// 入口
@@ -20,9 +22,8 @@ module.exports = {
     },// 开发服务器
     module: {},//模块配置
     plugins: [
-        new ExtractTextWebpackPlugin({
-            filename: 'css/index.css'
-        }),
+        LessExtract,
+        CssExtract,
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(['./build']),
         // 打包html插件
@@ -44,7 +45,7 @@ module.exports = {
                 // },{
                 //     loader: 'css-loader'
                 // }]
-                use: ExtractTextWebpackPlugin.extract({
+                use: CssExtract.extract({
                     use:[{
                         loader: 'css-loader'
                     }]
@@ -57,7 +58,7 @@ module.exports = {
                 //     { loader: 'css-loader' },
                 //     { loader: 'less-loader' },
                 // ]
-                use: ExtractTextWebpackPlugin.extract({
+                use: LessExtract.extract({
                     use:[
                         { loader: 'css-loader' },
                         { loader: 'less-loader' },
